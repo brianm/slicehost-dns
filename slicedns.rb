@@ -1,20 +1,18 @@
 #!/usr/bin/env ruby
 require 'rubygems'
-require 'activeresource'
+require 'active_resource'
 
-# Get your API key from your SliceManager here:
-# https://manage.slicehost.com/api/
-# and put it here:
-API_PASSWORD = 'your_api_key_goes_here'
-
-unless ARGV.size == 2 && ARGV[1].end_with?('.')
-  puts "Usage: #{__FILE__} slice domain.com."
+unless ARGV.size == 3 && ARGV[1].end_with?('.')
+  puts "Usage: #{__FILE__} slice domain.com. api-key"
+  puts "Get your API key from your SliceManager here:"
+  puts "https://manage.slicehost.com/api/"
   exit
 end
 
 # Get command line arguments
 slice_name = ARGV.shift
 zone_name = ARGV.shift
+API_PASSWORD = ARGV.shift
 
 # Make sure you set this thing up
 if API_PASSWORD == 'your_api_key_goes_here'
